@@ -18,6 +18,10 @@ export class PaisServiceService {
     return this.http.get<Pais[]>(this.paisUrl);
   }
 
+  public findById(id:number){
+    return this.http.get<Pais>('${this.paisUrl}/${id}');
+  }
+
   public save(pais: Pais) {
     console.log(pais);
     return this.http.post<Pais>(this.paisUrl, pais);
