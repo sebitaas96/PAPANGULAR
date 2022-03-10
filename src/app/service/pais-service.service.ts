@@ -8,17 +8,18 @@ import { Observable } from 'rxjs';
 })
 export class PaisServiceService {
 
-  private usersUrl: string;
+  private paisUrl: string;
 
   constructor(private http: HttpClient) {
-    this.usersUrl = 'http://localhost:8080/pais';
+    this.paisUrl = 'http://localhost:8080/pais';
   }
 
   public findAll(): Observable<Pais[]> {
-    return this.http.get<Pais[]>(this.usersUrl);
+    return this.http.get<Pais[]>(this.paisUrl);
   }
 
   public save(pais: Pais) {
-    return this.http.post<Pais>(this.usersUrl, pais);
+    console.log(pais);
+    return this.http.post<Pais>(this.paisUrl, pais);
   }
 }

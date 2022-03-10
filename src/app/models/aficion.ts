@@ -1,4 +1,4 @@
-export class Pais {
+export class Aficion {
     id:string;
     nombre:string;
 
@@ -6,4 +6,5 @@ export class Pais {
         this.id = id;
         this.nombre = nombre;
     }
+    
 }

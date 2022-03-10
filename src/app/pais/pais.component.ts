@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Pais } from '../models/pais';
+import { PaisServiceService } from '../service/pais-service.service';
 
 @Component({
   selector: 'pais',
@@ -8,9 +10,16 @@ import { Router } from '@angular/router';
 })
 export class PaisComponent implements OnInit {
 
-  constructor(private router:Router) { }
+  paises :Pais[];
+
+  constructor(private router:Router , private paisService: PaisServiceService) { 
+    this.paises = [];
+  }
 
   ngOnInit(): void {
+    this.paisService.findAll().subscribe(data => {
+      this.paises = data;
+    });
   }
 
   /*Redirigir con  parametros*/

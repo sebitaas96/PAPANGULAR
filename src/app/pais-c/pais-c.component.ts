@@ -11,15 +11,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class PaisCComponent implements OnInit {
 
   pais:Pais;
-  public nombre:string;
 
   constructor( private route: ActivatedRoute, private router: Router,  private paisService: PaisServiceService)  {
-      this.nombre="";
-      this.pais = new Pais(this.nombre);
+      this.pais = new Pais('','');
   }
 
   onSubmit(){
-    console.log("lego aqui");
     this.paisService.save(this.pais).subscribe(result => this.gotoPaisList());
   }
 
