@@ -17,12 +17,16 @@ export class PersonaCComponent implements OnInit {
   persona:Persona;
   paises :Pais[];
   aficiones : Aficion[];
+  personaNaceId:number;
+  personaViveId:number;
 
   constructor(private route:ActivatedRoute , private router:Router , private personaService: PersonaService 
     , private paisService: PaisServiceService , private aficionService:AficionService) {
-    this.persona = new Persona('', '' , '', new Pais('','') ,new Pais('','') , new Date());
+    this.persona = new Persona('', '' , '', new Date(),new Pais('','') ,new Pais('',''));
     this.paises = [];
     this.aficiones = [];
+    this.personaNaceId = 0;
+    this.personaViveId = 0;
    }
 
   ngOnInit(): void {
@@ -36,9 +40,13 @@ export class PersonaCComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log(this.persona);
-    let paisNace = this.paisService.findById()
-    let paisVive 
+     this.paisService.findById(this.personaNaceId).subscribe(data=>{
+       this.persona.nace = data;
+     });
+     this.paisService.findById(this.personaViveId).subscribe(data=>{
+       this.persona.vive = data;
+     });
+
     this.personaService.save(this.persona).subscribe(result => this.gotoPersonaList());
   }
 

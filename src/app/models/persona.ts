@@ -5,11 +5,10 @@ export class Persona {
     nombre:string;
     nacimiento:Date;
     password:string;
-    nace:Pais;
-    vive:Pais;
+    nace: Pais ;
+    vive:Pais ;
 
-
-    constructor(id:string,  nombre:string ,password:string , nace:Pais , vive:Pais, nacimiento:Date ){
+    constructor(id:string,  nombre:string ,password:string ,  nacimiento:Date , nace:Pais , vive:Pais){
         this.id = id;
         this.nombre = nombre;
         this.nacimiento = nacimiento;

@@ -17,14 +17,14 @@
 		</div>
 		<div class="col-2">	
 				<label class="d-block" for="nace">Pais donde nació</label>
-  				<select class="custom-select w-100" [(ngModel)]="persona.nace" id="nace" name="nace">
+  				<select class="custom-select w-100" [(ngModel)]="personaNaceId" id="nace" name="nace">
   					<!--<option value="" selected="selected">Choose..</option>-->
-  					<option *ngFor="let pais of paises" value="{{pais.id}}">{{pais.nombre}}</option>
+  					<option *ngFor="let pais of paises"  value="{{pais.id}}">{{pais.nombre}}</option>
   				</select>
   		</div>
   		<div class="col-2">	
 				<label class="d-block" for="vive">Pais donde reside</label>
-  				<select class="custom-select w-100" [(ngModel)]="persona.vive" id="vive" name="vive">
+  				<select class="custom-select w-100" [(ngModel)]="personaViveId" id="vive" name="vive">
   					<!--<option value="" selected="selected">Choose..</option>-->
   					<option *ngFor="let pais of paises" value="{{pais.id}}" >{{pais.nombre}}</option>
   				</select>
