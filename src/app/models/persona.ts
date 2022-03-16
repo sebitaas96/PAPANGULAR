@@ -1,20 +1,25 @@
+import { Aficion } from "./aficion";
 import { Pais } from "./pais";
 
 export class Persona {
-    id:string;
+    id:number;
     nombre:string;
-    nacimiento:Date;
+    fNacimiento:Date;
     password:string;
     nace: Pais ;
     vive:Pais ;
+    aficionesGusta:Array<Aficion>;
+    aficionesDisgusta:Array<Aficion>;
 
-    constructor(id:string,  nombre:string ,password:string ,  nacimiento:Date , nace:Pais , vive:Pais){
+    constructor(id:number,  nombre:string ,password:string ,  nacimiento:Date , nace:Pais , vive:Pais){
         this.id = id;
         this.nombre = nombre;
-        this.nacimiento = nacimiento;
+        this.fNacimiento = nacimiento;
         this.password = password;
         this.nace = nace;
         this.vive = vive;
+        this.aficionesGusta = [];
+        this.aficionesDisgusta = [];
     }
 
 }

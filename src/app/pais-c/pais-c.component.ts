@@ -13,7 +13,7 @@ export class PaisCComponent implements OnInit {
   pais:Pais;
 
   constructor( private route: ActivatedRoute, private router: Router,  private paisService: PaisServiceService)  {
-      this.pais = new Pais('','');
+      this.pais = new Pais(0,'');
   }
 
   onSubmit(){

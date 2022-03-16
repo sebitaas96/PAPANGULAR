@@ -17,16 +17,12 @@ export class PersonaCComponent implements OnInit {
   persona:Persona;
   paises :Pais[];
   aficiones : Aficion[];
-  personaNaceId:number;
-  personaViveId:number;
 
   constructor(private route:ActivatedRoute , private router:Router , private personaService: PersonaService 
     , private paisService: PaisServiceService , private aficionService:AficionService) {
-    this.persona = new Persona('', '' , '', new Date(),new Pais('','') ,new Pais('',''));
+    this.persona = new Persona(0, '' , '', new Date(),new Pais(0,'') ,new Pais(0,''));
     this.paises = [];
     this.aficiones = [];
-    this.personaNaceId = 0;
-    this.personaViveId = 0;
    }
 
   ngOnInit(): void {
@@ -40,13 +36,6 @@ export class PersonaCComponent implements OnInit {
   }
 
   onSubmit(){
-     this.paisService.findById(this.personaNaceId).subscribe(data=>{
-       this.persona.nace = data;
-     });
-     this.paisService.findById(this.personaViveId).subscribe(data=>{
-       this.persona.vive = data;
-     });
-
     this.personaService.save(this.persona).subscribe(result => this.gotoPersonaList());
   }
 
@@ -54,4 +43,28 @@ export class PersonaCComponent implements OnInit {
     this.router.navigate(['/persona']);
   }
 
+  addGusta(e:any){
+    let aficion:Aficion = e.target.value;
+    console.log(aficion.id);
+    let idx = this.persona.aficionesGusta.indexOf(aficion) 
+    if(idx == null){
+      this.persona.aficionesGusta.push(aficion);
+    }
+    else{
+      this.persona.aficionesGusta.splice(idx , 0);
+    } 
+    console.log(this.persona.aficionesGusta);
+  }
+
+  addDisgusta(e:any){
+    let aficion:Aficion = e.target.value;
+    let idx = this.persona.aficionesDisgusta.indexOf(aficion) 
+    if(idx == null){
+      this.persona.aficionesDisgusta.push(aficion);
+    }
+    else{
+      this.persona.aficionesDisgusta.splice(idx , 0);
+    } 
+    console.log(this.persona.aficionesDisgusta);
+  }
 }

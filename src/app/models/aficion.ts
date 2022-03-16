@@ -1,10 +1,16 @@
-export class Aficion {
-    id:string;
-    nombre:string;
+import { Persona } from "./persona";
 
-    constructor(id:string , nombre:string){
+export class Aficion {
+    id:number;
+    nombre:string;
+    personasGustan:Array<Persona>;
+    personasDisgustan:Array<Persona>;
+
+    constructor(id:number , nombre:string){
         this.id = id;
         this.nombre = nombre;
+        this.personasGustan = [];
+        this.personasDisgustan = [];
     }
     
 }

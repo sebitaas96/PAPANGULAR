@@ -13,33 +13,33 @@
 		</div>
 		<div class="col-2">			
 			<label for="nacimiento">Fecha de nacimiento :</label>
-			<input type="date" [(ngModel)]="persona.nacimiento" name="fNacimiento" id="nacimiento" required="required" class="form-control"/>
+			<input type="date" [(ngModel)]="persona.fNacimiento" name="fNacimiento" id="nacimiento" required="required" class="form-control"/>
 		</div>
 		<div class="col-2">	
 				<label class="d-block" for="nace">Pais donde nació</label>
-  				<select class="custom-select w-100" [(ngModel)]="personaNaceId" id="nace" name="nace">
+  				<select class="custom-select w-100" [(ngModel)]="persona.nace" id="nace" name="nace">
   					<!--<option value="" selected="selected">Choose..</option>-->
-  					<option *ngFor="let pais of paises"  value="{{pais.id}}">{{pais.nombre}}</option>
+  					<option *ngFor="let pais of paises"  [ngValue]="pais">{{pais.nombre}}</option>
   				</select>
   		</div>
   		<div class="col-2">	
 				<label class="d-block" for="vive">Pais donde reside</label>
-  				<select class="custom-select w-100" [(ngModel)]="personaViveId" id="vive" name="vive">
+  				<select class="custom-select w-100" [(ngModel)]="persona.vive" id="vive" name="vive">
   					<!--<option value="" selected="selected">Choose..</option>-->
-  					<option *ngFor="let pais of paises" value="{{pais.id}}" >{{pais.nombre}}</option>
+  					<option *ngFor="let pais of paises" [ngValue]="pais" >{{pais.nombre}}</option>
   				</select>
   		</div>
   		 <div class="col-6 mt-4">
   		 	<label>Aficiones que le gusta</label>
   			<div class="custom-control custom-checkbox" *ngFor="let aficion of aficiones">
-  				<input type="checkbox" class="custom-control-input" id="gus-{{aficion.id}}" value="{{aficion.id}}">
+  				<input type="checkbox" class="custom-control-input"  (change)="addGusta($event);" id="gus-{{aficion.id}}" [value]="aficion">
   				<label class="custom-control-label" for="gus-{{aficion.id}}">{{aficion.nombre}}</label>
 			</div>
   		</div>
   		 <div class="col-6 mt-4">
   		 	<label>Aficiones que le disgusta</label>
   			<div class="custom-control custom-checkbox" *ngFor="let aficion of aficiones">
-  				<input type="checkbox" class="custom-control-input" id="disgus-{{aficion.id}}" value="{{aficion.id}}">
+  				<input type="checkbox" class="custom-control-input" (change)="addDisgusta($event);" id="disgus-{{aficion.id}}" [value]="aficion">
   				<label class="custom-control-label" for="disgus-{{aficion.id}}">{{aficion.nombre}}</label>
 			</div>
   		</div>

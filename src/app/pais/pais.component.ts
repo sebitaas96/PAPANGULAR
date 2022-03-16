@@ -18,6 +18,16 @@ export class PaisComponent implements OnInit {
 
   ngOnInit(): void {
     this.paisService.findAll().subscribe(data => {
+     data.forEach(pais =>{
+          this.paisService.findResidentes(pais.id).subscribe(data=>{
+            pais.residentes = data;
+          });
+
+          this.paisService.findNativos(pais.id).subscribe(data=>{
+            pais.nativos = data;
+          });
+
+      });
       this.paises = data;
     });
   }

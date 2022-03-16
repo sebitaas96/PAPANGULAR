@@ -14,7 +14,7 @@ export class AficionCComponent implements OnInit {
   aficion:Aficion;
 
   constructor(private route: ActivatedRoute, private router: Router,  private aficionService: AficionService) {
-    this.aficion = new Aficion("" , "");
+    this.aficion = new Aficion(0 , "");
    }
 
   ngOnInit(): void {

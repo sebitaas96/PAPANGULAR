@@ -16,6 +16,8 @@
         <tr *ngFor="let pais of paises">
           <td>{{ pais.id }}</td>
           <td>{{ pais.nombre }}</td>
+          <td><span *ngFor = "let residente of pais.residentes">{{residente.nombre}}</span></td>
+          <td><span *ngFor = "let nativo of pais.nativos">{{nativo.nombre}}</span></td>
         </tr>
       </tbody>
     </table>
